@@ -60,8 +60,10 @@ function myfetch(url){
         xhr.send()
     })
 }
+const delay = (t) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(console.log('Задержка', t),  t)
+  })
+}
 // 3
-const delay = new Promise (function (resolve, reject) {
-    setTimeout(console.log("1"), 500)
-})
-Promise.race([myfetch('https://swapi.co/api/people/1/'), delay]).then(res => console.log(res))
+Promise.race([myfetch('https://swapi.co/api/people/1/'), delay(500)]).then(res => console.log(res))
